@@ -25,10 +25,10 @@ async def start_handler(message: types.Message):
     await message.reply(f"Hello, {user_full_name}! Write a word or emoji to get a GIF on this topic.")
 
 
-@dp.message_handler(lambda message: True)  # Обработчик всех сообщений
+@dp.message_handler(lambda message: True)
 async def search_gif_handler(message: types.Message):
     user_id = message.from_user.id
-    search = message.text  # Получаем текст сообщения в качестве запроса
+    search = message.text
 
     if search:
         offset = random.randint(0, 100)
@@ -57,7 +57,7 @@ async def search_gif_handler(message: types.Message):
         except Exception as e:
             await message.reply(f"Произошла ошибка при запросе GIF: {str(e)}")
 
-    user_search_queries[user_id] = ""  # Очищаем запрос пользователя после отправки GIF
+    user_search_queries[user_id] = ""
 
 
 if __name__ == '__main__':
